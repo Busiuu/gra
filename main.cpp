@@ -7,8 +7,8 @@ int main() {
     
     // create some shapes
     sf::CircleShape circle(100.0);
-    circle.setPosition(sf::Vector2f(0.0, 0.0));
-    circle.setFillColor(sf::Color(0, 250, 0));
+    circle.setPosition(sf::Vector2f(0.0, 100.0));
+    circle.setFillColor(sf::Color(0, 250, 250));
     
     sf::RectangleShape rectangle(sf::Vector2f(120.0, 60.0));
     rectangle.setPosition(sf::Vector2f(500.0, 400.0));
