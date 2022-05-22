@@ -7,12 +7,12 @@ int main() {
     
     // create some shapes
     sf::CircleShape circle(100.0);
-    circle.setPosition(sf::Vector2f(100.0, 300.0));
-    circle.setFillColor(sf::Color(100, 250, 50));
+    circle.setPosition(sf::Vector2f(0.0, 0.0));
+    circle.setFillColor(sf::Color(0, 250, 0));
     
     sf::RectangleShape rectangle(sf::Vector2f(120.0, 60.0));
     rectangle.setPosition(sf::Vector2f(500.0, 400.0));
-    rectangle.setFillColor(sf::Color(100, 50, 250));
+    rectangle.setFillColor(sf::Color(0, 0, 250));
     
     sf::ConvexShape triangle;
     triangle.setPointCount(3);
@@ -21,7 +21,7 @@ int main() {
     triangle.setPoint(2, sf::Vector2f(140.0, 40.0));
     triangle.setOutlineColor(sf::Color::Red);
     triangle.setOutlineThickness(5);
-    triangle.setPosition(sf::Vector2f(600.0, 160.0));
+    triangle.setPosition(sf::Vector2f(300.0, 160.0));
     
     // run the program as long as the window is open
     while (window.isOpen()) {
