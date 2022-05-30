@@ -6,11 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "stopAtEntry": true,
-      "externalConsole": true,
-      "cwd": "/Users/busiu/Desktop/zajecia/Informatyka/m1",
-      "program": "${workspaceFolder}/main",
-      "MIMode": "gdb"
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/main"
     }
   ]
 }
