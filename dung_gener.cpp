@@ -3,6 +3,7 @@
 #include <list>
 #include <cstdlib>
 #include <iostream>
+#include <array>
 #include <vector>
 #include "dung_gener.hpp"
 #include "pokoje.hpp"
@@ -124,9 +125,53 @@ void engine::Generator::Gen(sf::Vector2i start, sf::Vector2i end, engine::Room::
             
 }
 
+void engine::Generator::mapa(){
+            engine::Hall temp_Hall;
+            engine::Shop temp_Shop;
+            engine::Start temp_Start;
+            engine::Item_room temp_Item;
+            engine::Empty temp_Empty;
+            engine::Boss temp_Boss;
+            for(int i = 0; i < 8; i++){
+                for(int j = 0; j < 8; j++){
+                    switch(pokoje[j][i]){
+                        case 0:
+                        mapa_.push_back(temp_Empty.getLevels());
+                        break;
+                        case 1:
+                        mapa_.push_back(temp_Hall.getLevels());
+                        break;
+                        case 2:
+                        mapa_.push_back(temp_Start.getLevels());
+                        break;
+                        case 5:
+                        mapa_.push_back(temp_Shop.getLevels());
+                        break;
+                        case 7:
+                        mapa_.push_back(temp_Item.getLevels());
+                        break;
+                        case 9:
+                        mapa_.push_back(temp_Boss.getLevels());
+                        break;
+                        default:
+                        break;
+                    }
+                }
+            }
+};
 
+void engine::Generator::rysuj_bg(int a, int b){
+    int temp[256];
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8 ; j++){
+                temp[i + j] = mapa_.at(i+j).at(j).at(i);
+            }
+        }
+        if (!map.load("tiles.png", sf::Vector2u(64, 64), temp, 16, 16))
+            std::cout << "ERROR" << std::endl;
+};
 
-void engine::Generator::drawable(){
+void engine::Generator::init(){
             for (int i = 0; i < 8; ++i){
                 for(int j = 0; j < 8; ++j){
                     pokoje[i][j] = 0;
@@ -140,9 +185,7 @@ void engine::Generator::drawable(){
             Gen(startPos_, bossPos_, engine::Room::Pokoj_::Boss );
             Gen(startPos_, shopPos_, engine::Room::Pokoj_::Shop );
             Gen(startPos_, itemPos_, engine::Room::Pokoj_::Item );
+            mapa();
+            rysuj_bg(startPos_.x, startPos_.y);
             
-            if (!map.load("tiles.png", sf::Vector2u(64, 64), levels, 16, 16))
-                std::cout << "ERROR" << std::endl;
-            
-
 };

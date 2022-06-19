@@ -10,13 +10,60 @@ engine::Room::Room(sf::Vector2f size, sf::Vector2f pos, Pokoj_ rooms,  sf::Color
             setFillColor(color);
 };
 
-void engine::Room::Room_gen(){
-            setFillColor(sf::Color::White);
-            active = true;
+engine::Room::~Room(){};
+
+engine::Empty::Empty(sf::Vector2f pos, sf::Vector2f size)  : engine::Room::Room(size, pos){};
+
+engine::Empty::~Empty(){};
+
+engine::Start::Start(sf::Vector2f pos, sf::Vector2f size)  : engine::Room::Room(size, pos){};
+
+engine::Start::~Start(){
+    active = false;
 };
 
-sf::RectangleShape engine::Room::drawing(){
-    return rectangle;
-}
+engine::Hall::Hall(sf::Vector2f pos, sf::Vector2f size)  : engine::Room::Room(size, pos){};
 
-engine::Room::~Room(){};
+engine::Hall::~Hall(){};
+
+engine::Item_room::Item_room(sf::Vector2f pos, sf::Vector2f size)  : engine::Room::Room(size, pos){
+        active = false;
+};
+
+engine::Item_room::~Item_room(){};
+
+engine::Shop::Shop(sf::Vector2f pos, sf::Vector2f size)  : engine::Room::Room(size, pos){
+    active = false;
+};
+
+engine::Shop::~Shop(){};
+
+engine::Boss::Boss(sf::Vector2f pos, sf::Vector2f size)  : engine::Room::Room(size, pos){
+    active = false;
+};
+
+engine::Boss::~Boss(){};
+
+std::vector<std::vector<int> >  engine::Empty::getLevels(){
+    return level_.at(0);
+};
+
+std::vector<std::vector<int> >  engine::Start::getLevels(){
+    return level_.at(0);
+};
+
+std::vector<std::vector<int> >  engine::Hall::getLevels(){
+    return level_.at(rand() % layers);
+};
+
+std::vector<std::vector<int> >  engine::Item_room::getLevels(){
+    return level_.at(rand() % layers);
+};
+
+std::vector<std::vector<int> >  engine::Shop::getLevels(){
+    return level_.at(rand() % layers);
+};
+
+std::vector<std::vector<int> >  engine::Boss::getLevels(){
+    return level_.at(rand() % layers);
+};

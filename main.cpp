@@ -1,4 +1,6 @@
-#include <iostream> 
+#include <iostream>
+#include <vector> 
+#include <array>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include "dung_gener.hpp"
@@ -14,7 +16,7 @@ int main() {
     // create the window
     sf::RenderWindow window(sf::VideoMode(1024,1024), "Rouge-like");
     engine::Generator silnik;
-    silnik.drawable();
+    silnik.init();
     // run the program as long as the window is open
     while (window.isOpen()) {
         // check all the window's events that were triggered since the last iteration of the loop
