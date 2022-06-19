@@ -21,10 +21,9 @@ namespace engine {
         void Gen(sf::Vector2i start, sf::Vector2i end, engine::Room::Pokoj_ rooms );
 
         void mapa();
-
-       
         
         public: 
+        void update_potwor();
         void rysuj_bg(int a, int b);
         void init();
         int pokoje[8][8];
@@ -35,6 +34,6 @@ namespace engine {
         sf::Vector2i bossPos_;
         sf::Vector2i shopPos_;
         sf::Vector2i itemPos_;
-
+        int ilosc_potworow = 0;
     };
 };

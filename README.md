@@ -50,4 +50,3 @@ Gracz miałby również kupienia chcoiażby dodatkowe leczenie za zbierane podcz
 
 Każdy poziom miałby specialne pomieszczenie, które zawierałoby jakaś broń lub znaczne ulepszenie statystyk bohatera. 
 
-
