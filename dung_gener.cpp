@@ -34,7 +34,7 @@ sf::Vector2i engine::Generator::bossPos(){
 sf::Vector2i engine::Generator::shopPos(){
             int x = std::rand() % 6 + 1;
             int y;
-            if (x<1 || x>4)
+            if (x<2 || x>5)
             y = std::rand() % 6 + 1;
             else{
                 if (int i = std::rand() % 2; i < 1)
@@ -49,7 +49,7 @@ sf::Vector2i engine::Generator::shopPos(){
 sf::Vector2i engine::Generator::itemPos(){
             int x = std::rand() % 4 + 2;
             int y;
-            if (x<1 || x>2)
+            if (x<3 || x>4)
             y = std::rand() % 4 + 2;
             else{
                 if (int i = std::rand() % 2; i < 1)
@@ -161,13 +161,13 @@ void engine::Generator::mapa(){
 };
 
 void engine::Generator::rysuj_bg(int a, int b){
-    int temp[256];
+    int temp[256]  {0};
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8 ; j++){
-                temp[i + j] = mapa_.at(i+j).at(j).at(i);
+                temp[i*8 + j] = mapa_.at(a*8+b).at(i).at(j);
             }
         }
-        if (!map.load("tiles.png", sf::Vector2u(64, 64), temp, 16, 16))
+        if (!map.load("tile.png", sf::Vector2u(128, 128), temp, 8, 8))
             std::cout << "ERROR" << std::endl;
 };
 

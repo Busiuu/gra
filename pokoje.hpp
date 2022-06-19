@@ -42,6 +42,7 @@ namespace engine{
         protected:
         const int layers = 1;
         std::vector<std::vector<std::vector<int> > >  level_= {{
+
             { 14, 10, 12, 11, 10, 12, 11, 13},
             { 15, 3, 6, 2, 1, 7, 8, 18},
             { 15, 4, 1, 6, 2, 5, 3, 18},
