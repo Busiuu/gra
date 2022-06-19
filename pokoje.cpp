@@ -10,7 +10,6 @@ engine::Room::Room(sf::Vector2f size, sf::Vector2f pos, Pokoj_ rooms,  sf::Color
             setFillColor(color);
 };
 
-
 void engine::Room::Room_gen(){
             setFillColor(sf::Color::White);
             active = true;

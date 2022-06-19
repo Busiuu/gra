@@ -6,6 +6,7 @@
 #include <vector>
 #include "dung_gener.hpp"
 #include "pokoje.hpp"
+#include "Tiles.hpp"
  
 sf::Vector2i engine::Generator::startPos(){
             int x = std::rand() % 2 + 3;
@@ -123,6 +124,8 @@ void engine::Generator::Gen(sf::Vector2i start, sf::Vector2i end, engine::Room::
             
 }
 
+
+
 void engine::Generator::drawable(){
             for (int i = 0; i < 8; ++i){
                 for(int j = 0; j < 8; ++j){
@@ -137,4 +140,9 @@ void engine::Generator::drawable(){
             Gen(startPos_, bossPos_, engine::Room::Pokoj_::Boss );
             Gen(startPos_, shopPos_, engine::Room::Pokoj_::Shop );
             Gen(startPos_, itemPos_, engine::Room::Pokoj_::Item );
+            
+            if (!map.load("tiles.png", sf::Vector2u(64, 64), levels, 16, 16))
+                std::cout << "ERROR" << std::endl;
+            
+
 };

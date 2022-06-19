@@ -5,16 +5,16 @@
 #include "dung_gener.cpp"
 #include "pokoje.hpp"
 #include "pokoje.cpp"
+#include "Tiles.hpp"
 
 using namespace std;
 
 int main() {
     srand (time(NULL));
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800,800), "My window");
+    sf::RenderWindow window(sf::VideoMode(1024,1024), "Rouge-like");
     engine::Generator silnik;
     silnik.drawable();
-    vector<engine::Room> items;
     // run the program as long as the window is open
     while (window.isOpen()) {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -29,13 +29,7 @@ int main() {
         window.clear(sf::Color::Black);
         
         // draw everything here...
-        // for (int i= 0; i < 8; i++){
-        //     for (int j= 0; j < 8; j++){
-        //         std::cout << " " << engine::Generator::pokoje[j][i];
-        //         if (j == 7)
-        //         std::cout << std::endl;
-        //     }
-        // }
+        window.draw(silnik.map);
         // end the current frame
         window.display();
     }

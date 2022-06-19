@@ -1,4 +1,5 @@
 #include "pokoje.hpp"
+#include "Tiles.hpp"
 #pragma once
 
 namespace engine {
@@ -22,7 +23,9 @@ namespace engine {
         public:
         void drawable();
         int pokoje[8][8];
+        TileMap map;
         private:
+        int level[4194304];
         sf::Vector2i startPos_;
         sf::Vector2i bossPos_;
         sf::Vector2i shopPos_;
