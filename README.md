@@ -20,7 +20,7 @@ Rysowanie poszczególnych poziomów odbywa się po podczytaniu kodowania wizualn
 sposób procedularny według określnych reguł, więc możliwości zapisania różnych wyglądów pomieszczeń jest prawie nieskończoność. Odpowiednio dla wartości 
 0 - rysowana jest przestrzeń niedstępna dla gracza, dla wartości 1-8 rysowane są różne wariacje podłogi. 9 - zejście do kolejnego poziomu, 10-12 wariacje ścian widziane od frontu, 13 sciana prawy górny róg, 14 - ściana lewy górny róg, 15 - lewa ściana, 16 - ściana lewy dolny róg, 17 - prawy dolny róg, 18 - prawa ściana, 19 - dolna śćiana, 20 - podest dla przedmiotów.
 
-### Pozstałe elementy
+### Pozostałe elementy
 
 Niestety na ten moment tylko tyle udało mi sie zawrzeć w grze z powodu braku czasu. Postaram się dokończyć projekt jak najszybciej , możliwe że dzisiaj jednak nie ukrywając jest obecnie sesja ,i czasu jest na wszystko bardzo mało. Opowiem więc chociaż co chciałbym jeszcze dodać i omówić z grubsza implementacje. 
 
