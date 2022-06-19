@@ -8,6 +8,7 @@
 #include "dung_gener.hpp"
 #include "pokoje.hpp"
 #include "Tiles.hpp"
+#include "Tiles.cpp"
  
 sf::Vector2i engine::Generator::startPos(){
             int x = std::rand() % 2 + 3;
@@ -164,7 +165,7 @@ void engine::Generator::rysuj_bg(int a, int b){
     int temp[256]  {0};
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8 ; j++){
-                temp[i*8 + j] = mapa_.at(a*8+b).at(i).at(j);
+                temp[i*8 + j] = mapa_.at(b*8+a).at(i).at(j);
             }
         }
         if (!map.load("tile.png", sf::Vector2u(128, 128), temp, 8, 8))
@@ -189,3 +190,6 @@ void engine::Generator::init(){
             rysuj_bg(startPos_.x, startPos_.y);
             
 };
+
+
+void engine::Generator::update_potwor(){};
