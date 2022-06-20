@@ -1,5 +1,6 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Window/Keyboard.hpp>
 #include <list>
 #include <cstdlib>
 #include <iostream>
@@ -19,29 +20,31 @@ Postac::~Postac() {};
 
 
 Bohater::Bohater(sf::Vector2f size, sf::Vector2f pos) : Postac(size, pos, "boh.png") {
-        
+         for(int i = 0; i < 8; i++){
+            rect.emplace_back(sf::IntRect(i*127, 8, 127, 172));
+        }
     };
 
 Bohater::~Bohater() {};
 
 bool Bohater::check(enum sf::Keyboard::Key key){
         sf::FloatRect rectangle_bounds = getGlobalBounds();
-        if( 32 < top_b && key == sf::Keyboard::Key::Up)
+        if( rectangle_bounds.top < 32 && key == sf::Keyboard::Key::Up)
         {
             return false;
         }
 
-        else if(rectangle_bounds.height - 32 > bottom_b && key == sf::Keyboard::Key::Down)
+        else if(rectangle_bounds.top + rectangle_bounds.height + 32 > 1024 && key == sf::Keyboard::Key::Down)
         {
             return false;
         }
 
-        if(32 < left_b && key == sf::Keyboard::Key::Left)
+        if(32 > rectangle_bounds.left && key == sf::Keyboard::Key::Left)
         {
             return false;
         }
 
-        else if(rectangle_bounds.width - 32>right_b && key == sf::Keyboard::Key::Right)
+        else if(rectangle_bounds.left + rectangle_bounds.width + 32 > 1024 && key == sf::Keyboard::Key::Right)
         {
             return false;
         }
@@ -49,29 +52,36 @@ bool Bohater::check(enum sf::Keyboard::Key key){
     }
 
 void Bohater::animate(sf::Time elapsed){
+            time_frame += elapsed;
+            if (time_frame.asSeconds() > 0.2){
+                if (frame >= 4){ frame = 1; };
+                setTextureRect(rect[frame]);
+                frame++;
+                time_frame = time_frame.Zero;
+            }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
                 // move up...
                 if (check(sf::Keyboard::Up))
-                    setPosition(getPosition() + sf::Vector2f(0,-(abs(1000*elapsed.asSeconds()))));
+                    setPosition(getPosition() + sf::Vector2f(0,-(abs(500*elapsed.asSeconds()))));
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
                 // move down...
                 if (check(sf::Keyboard::Down))
-                    setPosition(getPosition() + sf::Vector2f(0,abs(1000*elapsed.asSeconds())));
+                    setPosition(getPosition() + sf::Vector2f(0,abs(500*elapsed.asSeconds())));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 // move up...
                 if (check(sf::Keyboard::Left))
-                    setPosition(getPosition() + sf::Vector2f(0,-(abs(1000*elapsed.asSeconds()))));
+                    setPosition(getPosition() + sf::Vector2f(-(abs(500*elapsed.asSeconds())),0));
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
                 // move down...
                 if (check(sf::Keyboard::Right))
-                    setPosition(getPosition() + sf::Vector2f(0,abs(1000*elapsed.asSeconds())));
+                    setPosition(getPosition() + sf::Vector2f(abs(500*elapsed.asSeconds()),0));
             }
         
     }

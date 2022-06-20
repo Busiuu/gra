@@ -9,11 +9,13 @@ class Postac : public sf::RectangleShape {
     sf::Vector2i mouse_pos;
     sf::Vector2f pozycja;
     int zycie;
-    sf::IntRect rect;
+    std::vector<sf::IntRect> rect;
     float top_b = 0;
     float bottom_b = 0;
     float left_b = 0;
     float right_b = 0;
+    int frame;
+    sf::Time time_frame;
 };
 
 class Bohater : public Postac {
