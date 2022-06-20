@@ -45,11 +45,11 @@ engine::Boss::Boss(sf::Vector2f pos, sf::Vector2f size)  : engine::Room::Room(si
 engine::Boss::~Boss(){};
 
 std::vector<std::vector<int> >  engine::Empty::getLevels(){
-    return level_.at(0);
+    return level_.at(rand() % layers);
 };
 
 std::vector<std::vector<int> >  engine::Start::getLevels(){
-    return level_.at(0);
+    return level_.at(rand() % layers);
 };
 
 std::vector<std::vector<int> >  engine::Hall::getLevels(){

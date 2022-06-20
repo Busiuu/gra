@@ -40,7 +40,8 @@ int main() {
         
         // draw everything here...
         window.draw(silnik.map);
-        // window.draw(bohater);
+        window.draw(bohater);
+        bohater.animate(elapsed);
         // end the current frame
         window.display();
     }
